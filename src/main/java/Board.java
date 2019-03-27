@@ -1,19 +1,17 @@
-package model;
-
 public class Board {
 
     Node start;
     Node boxes[];
     Player players[];
 
-    public Board() {
-        boxes = new Node[100];
-        players = new Player[2];
+    public Board(int numPlayers) {
+        boxes = new Node[60];
+        players = new Player[numPlayers];
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 60; i++)
             boxes[i] = new Node(i+1);
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < numPlayers; i++)
             players[i] = new Player();
 
         connectExtraBoxes();
@@ -43,32 +41,25 @@ public class Board {
      * @param start la casilla donde inicia la conexion
      * @param end la casilla en donde termina la conexion
      */
-    private void conectBox(int start, int end){
+    private void connectBox(int start, int end){
         boxes[start-1].conecctionExtra = boxes[end-1];
     }
 
     private void connectExtraBoxes(){
         //conectar escaleras
-        conectBox(11, 39);
-        conectBox(17, 67);
-        conectBox(19, 45);
-        conectBox(21, 56);
-        conectBox(26, 50);
-        conectBox(43, 84);
-        conectBox(52, 76);
-        conectBox(70, 92);
-        conectBox(74, 100);
+        connectBox(12, 33);
+        connectBox(16, 37);
+        connectBox(26, 47);
+        connectBox(31, 52);
+        connectBox(40,59);
 
         //conectar serpientes
-        conectBox(18, 6);
-        conectBox(22, 2);
-        conectBox(36, 20);
-        conectBox(62,14);
-        conectBox(75, 30);
-        conectBox(78, 49);
-        conectBox(83, 8);
-        conectBox(93, 40);
-        conectBox(96, 69);
+        connectBox(13, 10);
+        connectBox(14, 5);
+        connectBox(21, 18);
+        connectBox(44, 35);
+        connectBox(55, 48);
+        connectBox(57, 42);
     }
 
     public int getCurrentBox(int numPlayer){
