@@ -75,6 +75,12 @@ public class Board {
         return players[numPlayer-1].getCurrentBox();
     }
 
+    public void reset(){
+        for (int i = 0; i < 2; i++) {
+            players[i].setCurrentBox(0);
+        }
+    }
+
     private class Node{
         int numBox;
         Node conecctionExtra;

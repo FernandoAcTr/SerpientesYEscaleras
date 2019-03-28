@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -13,13 +14,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<?import de.jensd.fx.glyphs.emojione.EmojiOneView?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BoardController">
 
     <top>
 
         <MenuBar>
             <Menu text="Archivo">
-                <MenuItem fx:id="mnuNew" text="Nuevo Juego" />
+                <MenuItem fx:id="mnuNewGame" text="Nuevo Juego" />
             </Menu>
 
             <Menu text="Ayuda">
@@ -31,26 +33,83 @@
     </top>
 
     <center>
-        <VBox prefHeight="642" prefWidth="909" styleClass="pane">
+        <AnchorPane prefHeight="642" prefWidth="909" styleClass="pane">
 
-        </VBox>
+            <GridPane layoutX="28.0" layoutY="84.0" fx:id="paneBoard">
+
+                <columnConstraints>
+                    <ColumnConstraints halignment="CENTER" prefWidth="66" />
+                    <ColumnConstraints halignment="CENTER" prefWidth="66" />
+                    <ColumnConstraints halignment="CENTER" prefWidth="66" />
+                    <ColumnConstraints halignment="CENTER" prefWidth="66" />
+                    <ColumnConstraints halignment="CENTER" prefWidth="66" />
+                    <ColumnConstraints halignment="CENTER" prefWidth="66" />
+                    <ColumnConstraints halignment="CENTER" prefWidth="66" />
+                    <ColumnConstraints halignment="CENTER" prefWidth="66" />
+                    <ColumnConstraints halignment="CENTER" prefWidth="66" />
+                    <ColumnConstraints halignment="CENTER" prefWidth="66" />
+                    <ColumnConstraints halignment="CENTER" prefWidth="66" />
+                    <ColumnConstraints halignment="CENTER" prefWidth="66" />
+                    <ColumnConstraints halignment="CENTER" prefWidth="66" />
+                </columnConstraints>
+
+                <rowConstraints>
+                    <RowConstraints prefHeight="66" valignment="CENTER" />
+                    <RowConstraints prefHeight="66" valignment="CENTER" />
+                    <RowConstraints prefHeight="66" valignment="CENTER" />
+                    <RowConstraints prefHeight="66" valignment="CENTER" />
+                    <RowConstraints prefHeight="66" valignment="CENTER" />
+                    <RowConstraints prefHeight="66" valignment="CENTER" />
+                    <RowConstraints prefHeight="66" valignment="CENTER" />
+                    <RowConstraints prefHeight="66" valignment="CENTER" />
+                </rowConstraints>
+            </GridPane>
+        </AnchorPane>
     </center>
 
     <right>
 
         <VBox>
-            <GridPane>
+            <GridPane prefHeight="300">
                 <Text text="Turno:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <Label text="1" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <Button prefWidth="160.0" text="Tirar" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                <Label fx:id="lblCurrentPlayer" text="1" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Button fx:id="btnShoot" maxWidth="-Infinity" prefWidth="160" text="Tirar" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="1">
+                    <graphic>
+                        <EmojiOneView glyphName="GAME_DIE" size="30" fill="black"/>
+                    </graphic>
+                </Button>
 
-                <Text text="Casillas:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <Text text="Dado 1:" GridPane.columnIndex="0" GridPane.rowIndex="2">
                     <GridPane.margin>
                         <Insets top="20" />
                     </GridPane.margin>
                 </Text>
 
-                <Label text="1" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <Label fx:id="lblDieOne" text="1" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets top="20" />
+                    </GridPane.margin>
+                </Label>
+
+                <Text text="Dado 2:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets top="20" />
+                    </GridPane.margin>
+                </Text>
+
+                <Label fx:id="lblDieTwo" text="1" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets top="20" />
+                    </GridPane.margin>
+                </Label>
+
+                <Text text="Casillas:" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                    <GridPane.margin>
+                        <Insets top="20" />
+                    </GridPane.margin>
+                </Text>
+
+                <Label fx:id="lblDieResult" text="1" GridPane.columnIndex="1" GridPane.rowIndex="4">
                     <GridPane.margin>
                         <Insets top="20" />
                     </GridPane.margin>
@@ -74,10 +133,11 @@
 
             <GridPane>
 
-                <Text text="Jugador 1:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <Label text="1" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <Text text="Jugador 2:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <Label text="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label text="Jugador 1:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="player1" />
+                <Label fx:id="lblPlayerOne" text="1" GridPane.columnIndex="1" GridPane.rowIndex="0"  styleClass="player1" />
+
+                <Label text="Jugador 2:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="player2"/>
+                <Label fx:id="lblPlayerTwo" text="1" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="player2"/>
 
                 <columnConstraints>
                     <ColumnConstraints halignment="CENTER" maxWidth="-Infinity" prefWidth="80" />
